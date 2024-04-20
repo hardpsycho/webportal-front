@@ -3,6 +3,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import { DefinePlugin, ProgressPlugin, WebpackPluginInstance } from 'webpack'
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
+import Dotenv from 'dotenv-webpack'
 
 import { ConfigOptions } from '../types'
 
@@ -13,7 +14,8 @@ export function pluginBuilder(configOptions: ConfigOptions): WebpackPluginInstan
         new MiniCssExtractPlugin(),
         new DefinePlugin({
             WP_DEV: JSON.stringify(configOptions.isDev)
-        })
+        }),
+        new Dotenv()
     ]
 
     if (configOptions.isDev) {
