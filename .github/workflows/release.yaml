@@ -1,7 +1,8 @@
 name: 'deploy front'
 on:
-  pull_request:
-    branches: [ develop ]
+  create:
+    branches:
+      - 'releases/**'
 
 jobs:
   pipeline:

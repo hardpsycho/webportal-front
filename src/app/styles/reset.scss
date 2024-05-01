@@ -1,0 +1,45 @@
+/*
+  1. Используем везде модель border-box.
+*/
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/*
+    2. Удаляем везде маржины
+*/
+* {
+    margin: 0;
+}
+
+/*
+    3. Типографика
+*/
+body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+/*
+    4. Параметры для медиа
+*/
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+/*
+    5. настраиваем инхерит для инпутов
+*/
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
