@@ -20,12 +20,12 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: npm install
       run: npm ci
-    - name: 'Create env file'
+    - name: 'Create .env file'
       run: |
         echo "${{ secrets.ENV_FILE }}" > .env
     - name: npm run production build
       if: always()
-      run: npm run build
+      run: npm run build:prod
     - name: Log in to Docker Hub
       uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
       with:
@@ -36,11 +36,22 @@ jobs:
       uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
       with:
         images: hapsy/webportal-front
+        tags: |
+            type=schedule
+            type=ref,event=branch
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{major}}
+            type=sha
     - name: Build and push Docker image
       uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671
       with:
         context: .
         file: ./Dockerfile
         push: true
-        tags: ${{ steps.meta.outputs.tags }}
-        labels: ${{ steps.meta.outputs.labels }}
+        tags: |
+          ${{ steps.meta.outputs.tags }}
+          hapsy/webportal-front:latest
+          hapsy/webportal-front:test-latest
+        labels: ${{ steps.meta.outputs.labels }},
