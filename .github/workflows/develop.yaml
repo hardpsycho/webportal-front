@@ -53,3 +53,9 @@ jobs:
           hapsy/webportal-front:latest
           hapsy/webportal-front:test-latest
         labels: ${{ steps.meta.outputs.labels }},
+    - name: Modify README.md
+      uses: jaywcjlove/github-action-modify-file-content@main
+      with:
+        path: argocd/deployment.yaml
+        body: "pr-${{ github.event.number }}"
+        overwrite: 'true'
