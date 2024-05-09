@@ -12,6 +12,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Update yaml
+      uses: fjogeleit/yaml-update-action@main
+      with:
+        valueFile: 'argocd/deployment.yaml'
+        propertyPath: 'spec.template.spec.containers[0].image'
+        value: hapsy/webportal-front:pr-${{ github.event.number }}
+        commitChange: false
     - name: Starting Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
@@ -53,10 +60,4 @@ jobs:
           hapsy/webportal-front:latest
           hapsy/webportal-front:test-latest
         labels: ${{ steps.meta.outputs.labels }},
-    - name: Update values.yaml
-      uses: fjogeleit/yaml-update-action@main
-      with:
-        valueFile: 'argocd/deployment.yaml'
-        propertyPath: 'spec.template.spec.containers[name=front-container].image'
-        value: hapsy/webportal-front:pr-${{ github.event.number }}
-        commitChange: false
+    
