@@ -16,9 +16,10 @@ jobs:
       uses: fjogeleit/yaml-update-action@main
       with:
         valueFile: 'argocd/deployment.yaml'
-        propertyPath: 'spec.template.spec.containers[1].image'
+        propertyPath: 'spec.template.spec.containers[0].image'
         value: hapsy/webportal-front:pr-${{ github.event.number }}
         commitChange: false
+        branch: develop
     - name: Starting Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
