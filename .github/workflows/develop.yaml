@@ -22,13 +22,14 @@ jobs:
         propertyPath: 'spec.template.spec.containers.0.image'
         value: hapsy/webportal-front:pr-${{ github.event.number }}
         commitChange: false
-    - name: Commit & Push changes
-      uses: devops-infra/action-commit-push@master
-      with:
-        github_token: "${{ secrets.GITHUB_TOKEN }}"
-        force: true
-        amend: true
-        no_edit: true
+    - name: Commit the changes made
+      run: | 
+        git config --global user.name 'hardpsycho'
+        git config --global user.email 'harddeveloper@outlook.com'
+        git checkout ${{ github.head_ref || github.ref_name }} 
+        git add .
+        git commit --amend --no-edit
+        git push -f origin ${{ github.head_ref || github.ref_name }} 
     - name: Starting Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
