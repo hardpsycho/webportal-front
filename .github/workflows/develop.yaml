@@ -28,7 +28,7 @@ jobs:
         github_token: "${{ secrets.GITHUB_TOKEN }}"
         force: true
         amend: true
-        no-edit: true
+        no_edit: true
     - name: Starting Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
