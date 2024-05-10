@@ -20,10 +20,12 @@ jobs:
         value: hapsy/webportal-front:pr-${{ github.event.number }}
         commitChange: false
     - name: Commit changes
-      uses: devops-infra/action-commit-push@master
+      uses: EndBug/add-and-commit@v9
       with:
-        github_token: "${{ secrets.MY_APP_TOKEN_ALL_RIGHTS }}"
-        amend: true
+        author_name: Your Name
+        author_email: mail@example.com
+        message: 'Your commit message'
+        push: true
     - name: Starting Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
