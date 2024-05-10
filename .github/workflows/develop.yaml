@@ -20,10 +20,13 @@ jobs:
         value: hapsy/webportal-front:pr-${{ github.event.number }}
         commitChange: false
     - name: Commit changes
-      uses: EndBug/add-and-commit@v9
+      uses: devops-infra/action-commit-push@master
       with:
-        message: 'Your commit message'
-        add: 'argocd'
+        github_token: "${{ secrets.GH_TOKEN }}"
+        add_timestamp: true
+        commit_prefix: "[AUTO]"
+        commit_message: "Automatic commit"
+        force: false
     - name: Starting Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
