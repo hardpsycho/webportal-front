@@ -19,15 +19,15 @@ jobs:
         propertyPath: 'spec.template.spec.containers.0.image'
         value: hapsy/webportal-front:pr-${{ github.event.number }}
         commitChange: false
-        amend: true
     - name: Commit changes
       uses: devops-infra/action-commit-push@master
       with:
-        github_token: "${{ secrets.GH_TOKEN }}"
+        github_token: "${{ secrets.GITHUB_TOKEN }}"
         add_timestamp: true
         commit_prefix: "[AUTO]"
         commit_message: "Automatic commit"
         force: false
+        amend: true
     - name: Starting Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
