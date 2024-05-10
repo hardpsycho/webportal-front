@@ -15,7 +15,7 @@ spec:
         app: my-app-test
     spec:
       containers:
-      - name: front-container
-        image: hapsy/webportal-front:latest
-        ports:
-        - containerPort: 80
+        - name: front-container
+          image: hapsy/webportal-front:pr-13
+          ports:
+            - containerPort: 80
