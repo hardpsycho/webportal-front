@@ -22,11 +22,7 @@ jobs:
     - name: Commit changes
       uses: devops-infra/action-commit-push@master
       with:
-        github_token: "${{ secrets.GITHUB_TOKEN }}"
-        add_timestamp: true
-        commit_prefix: "[AUTO]"
-        commit_message: "Automatic commit"
-        force: false
+        github_token: "${{ secrets.MY_APP_TOKEN_ALL_RIGHTS }}"
         amend: true
     - name: Starting Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
