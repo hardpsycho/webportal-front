@@ -26,6 +26,7 @@ jobs:
       run: | 
         git config --global user.name 'hardpsycho'
         git config --global user.email 'harddeveloper@outlook.com'
+        git fetch
         git checkout ${{ github.head_ref || github.ref_name }} 
         git add .
         git commit --amend --no-edit
