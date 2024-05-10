@@ -5,7 +5,7 @@ interface MainPageProps {}
 const MainPage: FC<MainPageProps> = () => {
     return (
         <div>
-            Main Page!!!!3333333
+            Main Page!!!!15
         </div>
     )
 }

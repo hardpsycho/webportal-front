@@ -11,14 +11,22 @@ jobs:
         node-version: [ 18.x ]
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@master
+      with:
+        # persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
+        fetch-depth: 0             # otherwise, you will fail to push refs to dest repo
     - name: Update yaml
       uses: fjogeleit/yaml-update-action@main
       with:
         valueFile: 'argocd/deployment.yaml'
-        propertyPath: 'spec.template.spec.containers[0].image'
+        propertyPath: 'spec.template.spec.containers.0.image'
         value: hapsy/webportal-front:pr-${{ github.event.number }}
         commitChange: false
+    - name: Commit & Push changes
+      uses: actions-js/push@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: features/test-8
     - name: Starting Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
