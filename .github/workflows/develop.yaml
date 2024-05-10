@@ -23,10 +23,12 @@ jobs:
         value: hapsy/webportal-front:pr-${{ github.event.number }}
         commitChange: false
     - name: Commit & Push changes
-      uses: actions-js/push@master
+      uses: devops-infra/action-commit-push@master
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: features/test-8
+        github_token: "${{ secrets.GITHUB_TOKEN }}"
+        force: true
+        amend: true
+        no-edit: true
     - name: Starting Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
