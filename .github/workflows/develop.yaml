@@ -19,6 +19,7 @@ jobs:
         propertyPath: 'spec.template.spec.containers.0.image'
         value: hapsy/webportal-front:pr-${{ github.event.number }}
         commitChange: false
+        amend: true
     - name: Commit changes
       uses: devops-infra/action-commit-push@master
       with:
