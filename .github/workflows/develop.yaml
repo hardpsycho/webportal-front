@@ -19,6 +19,11 @@ jobs:
         propertyPath: 'spec.template.spec.containers.0.image'
         value: hapsy/webportal-front:pr-${{ github.event.number }}
         commitChange: false
+    - name: Commit changes
+      uses: EndBug/add-and-commit@v9
+      with:
+        message: 'Your commit message'
+        add: 'argocd'
     - name: Starting Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
