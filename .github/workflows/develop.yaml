@@ -12,6 +12,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
+        fetch-depth: 0             # otherwise, you will fail to push refs to dest repo
     - name: Update yaml
       uses: fjogeleit/yaml-update-action@main
       with:
@@ -23,7 +26,6 @@ jobs:
       uses: actions-js/push@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: ${{ github.ref_name }}
     - name: Starting Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
