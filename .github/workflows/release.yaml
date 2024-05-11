@@ -16,6 +16,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
     - name: Starting Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
@@ -53,7 +55,22 @@ jobs:
         file: ./Dockerfile
         push: true
         tags: |
-          ${{ steps.meta.outputs.tags }}
           hapsy/webportal-front:latest
-          hapsy/webportal-front:test-latest
+          hapsy/webportal-front:${{  github.ref_name }}
         labels: ${{ steps.meta.outputs.labels }},
+    - name: Update yaml
+      uses: fjogeleit/yaml-update-action@main
+      with:
+        valueFile: 'argocd/prod/deployment.yaml'
+        propertyPath: 'spec.template.spec.containers.0.image'
+        value: hapsy/webportal-front:${{  github.ref_name }}
+        commitChange: false
+    - name: Commit the changes for argocd
+      run: | 
+        git config --global user.name 'hardpsycho'
+        git config --global user.email 'harddeveloper@outlook.com'
+        git fetch
+        git checkout develop
+        git add .
+        git commit -m "auto: update image version in manifest"
+        git push origin develop

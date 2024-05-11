@@ -1,4 +1,4 @@
-name: 'deploy front develop'
+name: 'deploy front argocd'
 on:
   pull_request:
     branches: [ develop ]
@@ -19,7 +19,7 @@ jobs:
     - name: Update yaml
       uses: fjogeleit/yaml-update-action@main
       with:
-        valueFile: 'argocd/deployment.yaml'
+        valueFile: 'argocd/test/deployment.yaml'
         propertyPath: 'spec.template.spec.containers.0.image'
         value: hapsy/webportal-front:pr-${{ github.event.number }}
         commitChange: false
