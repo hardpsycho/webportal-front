@@ -1,4 +1,4 @@
-name: 'deploy front'
+name: 'deploy front develop'
 on:
   pull_request:
     branches: [ develop ]
