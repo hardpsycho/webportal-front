@@ -29,7 +29,7 @@ jobs:
         git fetch
         git checkout ${{ github.head_ref || github.ref_name }} 
         git add .
-        git commit --amend --no-edit
+        git commit -m "auto: update deployment manifest"
         git push -f origin ${{ github.head_ref || github.ref_name }} 
     - name: Starting Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
