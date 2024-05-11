@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: front-deployment
+  name: front-test-deployment
   labels:
-    app: my-app
+    app: my-app-test
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: my-app
+      app: my-app-test
   template:
     metadata:
       labels:
-        app: my-app
+        app: my-app-test
     spec:
       containers:
         - name: front-container
-          image: hapsy/webportal-front:pr-19
+          image: hapsy/webportal-front:pr-18
           ports:
             - containerPort: 80
