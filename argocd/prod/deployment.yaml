@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: front-container
-          image: hapsy/webportal-front:latest
+          image: hapsy/webportal-front:v0.1-alpha
           ports:
             - containerPort: 80
