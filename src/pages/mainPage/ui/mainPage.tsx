@@ -5,7 +5,7 @@ interface MainPageProps {}
 const MainPage: FC<MainPageProps> = () => {
     return (
         <div>
-            Main Page!12
+            Это очень новая главная страница!
         </div>
     )
 }
