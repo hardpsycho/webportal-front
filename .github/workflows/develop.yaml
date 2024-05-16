@@ -1,4 +1,4 @@
-name: 'deploy front'
+name: 'deploy front develop'
 on:
   pull_request:
     branches: [ develop ]
@@ -11,7 +11,7 @@ jobs:
         node-version: [ 18.x ]
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@master
     - name: Starting Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
@@ -35,13 +35,7 @@ jobs:
       with:
         images: hapsy/webportal-front
         tags: |
-            type=schedule
-            type=ref,event=branch
             type=ref,event=pr
-            type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
-            type=semver,pattern={{major}}
-            type=sha
     - name: Build and push Docker image
       uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671
       with:
@@ -50,6 +44,6 @@ jobs:
         push: true
         tags: |
           ${{ steps.meta.outputs.tags }}
-          hapsy/webportal-front:latest
           hapsy/webportal-front:test-latest
         labels: ${{ steps.meta.outputs.labels }},
+    
