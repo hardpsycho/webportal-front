@@ -13,8 +13,6 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const Button: FC<ButtonProps> = ({ children, variant = ButtonVariant.STANDART, className, ...otherProps }) => {
-    console.log('classname', className);
-    
     return (
         <button {...otherProps} className={clsx(styles.button, styles[variant], className)} >
             {children}

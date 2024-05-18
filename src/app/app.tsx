@@ -4,6 +4,7 @@ import { RouterProvider } from 'react-router-dom'
 import './styles/main.scss'
 import { router } from './router/router'
 import { ThemeProvider } from '@shared/libs/theme'
+import '@shared/libs/i18n'
 
 interface AppProps {}
 

@@ -1,0 +1,35 @@
+.sidebar {
+    background: var(--inverted-bg-color);
+    height: calc(100vh - var(--navbar-height));
+    width: var(--sidebar-width);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    transition: 0.2s width linear;
+}
+
+.sidebar-btn {
+    background: var(--inverted-bg-color);
+    position: absolute;
+    right: -20px;
+    bottom: 30px;
+    font-size: 30px;
+    color: white;
+}
+
+.switchers {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.collapsed {
+    width: var(--sidebar-collapsed-width);
+
+    .switchers {
+        flex-direction: column;
+    }
+}
