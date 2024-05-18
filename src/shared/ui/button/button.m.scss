@@ -1,0 +1,21 @@
+.button {
+    outline: none;
+    cursor: pointer;
+    padding: 10px 20px;
+}
+
+.standart {
+    background-color: var(--primary-color);
+    color: var(--inverted-primary-color);
+}
+
+.ghost {
+    border: none;
+    background: none;
+    padding: 0;
+}
+
+.inverted {
+    background-color: var(--inverted-primary-color);
+    color: var(--primary-color);
+}

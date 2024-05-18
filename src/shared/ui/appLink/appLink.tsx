@@ -3,7 +3,7 @@ import { ReactNode, type FC } from 'react'
 import { Link, LinkProps } from 'react-router-dom'
 import styles from './appLink.m.scss'
 
-export enum AppLinkVariant {
+enum AppLinkVariant {
     STANDART = 'standart-color',
     INVERTED = 'inverted-color'
 }
@@ -22,4 +22,4 @@ const AppLink: FC<AppLinkProps> = ({ children, to, className, variant = AppLinkV
     )
 }
 
-export { AppLink }
+export { AppLink, AppLinkVariant }
