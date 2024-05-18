@@ -20,7 +20,7 @@ const ThemeSwitcher: FC<ThemeSwitcherProps> = ({ className }) => {
             className={clsx(styles.themeSwitcher, className)}
             onClick={toggleTheme}
         >
-            {theme === Theme.LIGHT ? <DarkIcon color='white' /> : <LightIcon  color='yellow' />}
+            {theme === Theme.LIGHT ? <DarkIcon /> : <LightIcon />}
         </Button>
     )
 }
