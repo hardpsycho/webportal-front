@@ -2,16 +2,20 @@ import { Outlet } from 'react-router-dom'
 import { clsx } from 'clsx'
 
 import { Navbar } from '@widgets/navbar'
-import { FC } from 'react'
+import { FC, Suspense } from 'react'
+import { useTheme } from '@shared/libs/theme'
 
 interface RootProps {}
 
 const Root: FC<RootProps> = () => {
+    const { theme } = useTheme();
     return (
-        <div id='root' className={clsx('app', 'hp-theme-light')}>
+        <div id='root' className={clsx('app', theme)}>
             <Navbar />
             <main>
-                <Outlet />
+                <Suspense fallback={<div>Loading...</div>}>
+                    <Outlet />
+                </Suspense>
             </main>
         </div>
     )
