@@ -6,18 +6,19 @@ import { FC, Suspense } from 'react'
 import { useTheme } from '@shared/libs/theme'
 import { Sidebar } from '@widgets/sidebar/ui/sidebar'
 import styles from './root.m.scss'
+import { PageLoader } from '@shared/ui/pageLoader'
 
 interface RootProps {}
 
 const Root: FC<RootProps> = () => {
-    const { theme } = useTheme();
+    const { theme } = useTheme()
     return (
-        <div id='root' className={clsx('app', theme)}>
+        <div id="root" className={clsx('app', theme)}>
             <Navbar />
             <div className={styles.wrapper}>
                 <Sidebar />
-                <main>
-                    <Suspense fallback={<div>Loading...</div>}>
+                <main className={styles.main}>
+                    <Suspense fallback={<PageLoader />}>
                         <Outlet />
                     </Suspense>
                 </main>
