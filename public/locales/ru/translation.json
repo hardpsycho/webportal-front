@@ -1,5 +1,6 @@
 {
     "main-page": "Главная страница",
     "language-abbreviation": "EN",
-    "not-found-page": "Страница не найдена"
+    "not-found-page": "Страница не найдена",
+    "error-message": "Произошла ошибка, попробуйте перезагрузить страницу"
 }
