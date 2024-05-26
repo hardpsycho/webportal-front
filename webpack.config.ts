@@ -13,7 +13,7 @@ export default function (args: WebpackArgs) {
         mode: args.mode || 'development',
         port: Number(args.port) || 3000,
         isDev: args.mode ? args.mode === 'development' : true,
-        analyze: args.analyze ? Boolean(args.analyze) : false
+        analyze: args.analyze === 'true'
     }
 
     const config: Configuration = webpackConfigBuilder(configOptions)
