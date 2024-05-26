@@ -1,5 +1,6 @@
 {
     "main-page": "Main page",
     "language-abbreviation": "RU",
-    "not-found-page": "Page not found"
+    "not-found-page": "Page not found",
+    "error-message": "Something went wrong. Try reload this page."
 }
