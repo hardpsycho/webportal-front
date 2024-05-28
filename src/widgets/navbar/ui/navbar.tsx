@@ -9,7 +9,7 @@ interface NavbarProps {
 
 const Navbar: FC<NavbarProps> = ({ className }) => {
     return (
-        <header className={clsx(styles.navbar, className)}>
+        <header data-testid='navbar' className={clsx(styles.navbar, className)}>
             <div className={styles.links}>
                 <AppLink to='/' variant={AppLinkVariant.INVERTED}>Главная</AppLink>
                 <AppLink to='/about' variant={AppLinkVariant.INVERTED}>О нас</AppLink>

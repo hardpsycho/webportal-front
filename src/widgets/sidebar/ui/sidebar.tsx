@@ -11,7 +11,7 @@ const Sidebar: FC<SidebarProps> = () => {
     const [isCollapsed, setIsCollapsed] = useState(true);
 
     return (
-        <aside className={clsx(styles.sidebar, {[styles.collapsed]: isCollapsed})}>
+        <aside data-testid='sidebar' className={clsx(styles.sidebar, {[styles.collapsed]: isCollapsed})}>
             <div className={clsx(styles.switchers)}>
                 <LanguageSwitcher />
                 <ThemeSwitcher />

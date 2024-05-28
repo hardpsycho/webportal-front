@@ -1,11 +1,11 @@
 import { Configuration } from 'webpack'
 
 import { pluginBuilder } from './builders/pluginBuilder'
-import { moduleBuilder } from './builders/moduleBuilder'
 import { resolveBuilder } from './builders/resolveBuilder'
 import { outputBuilder } from './builders/outputBuilder'
 import { ConfigOptions } from './types'
 import { devServerBuilder } from './builders/devServerBuilder'
+import { moduleBuilder } from './builders/moduleBuilder/moduleBuilder'
 
 export function webpackConfigBuilder(configOptions: ConfigOptions): Configuration {
     return {
