@@ -2,7 +2,6 @@ import { StoryFn } from '@storybook/react'
 import { clsx } from 'clsx'
 
 import { Theme } from '@shared/libs/theme'
-import '@shared/libs/i18n'
 import '@app/styles/main.scss'
 import './storybookRoot.scss'
 
