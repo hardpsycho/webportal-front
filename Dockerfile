@@ -2,7 +2,7 @@
 FROM node:18-alpine as build
 WORKDIR /app
 COPY . .
-RUN npm i
+RUN npm i --legacy-peer-deps
 RUN npm run build:prod
 
 # production environment
