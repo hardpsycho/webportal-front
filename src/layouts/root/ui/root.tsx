@@ -1,8 +1,8 @@
 import { Outlet } from 'react-router-dom'
 import { clsx } from 'clsx'
+import { FC, Suspense } from 'react'
 
 import { Navbar } from '@widgets/navbar'
-import { FC, Suspense } from 'react'
 import { useTheme } from '@shared/libs/theme'
 import { Sidebar } from '@widgets/sidebar/ui/sidebar'
 import styles from './root.m.scss'
@@ -17,7 +17,7 @@ const Root: FC<RootProps> = () => {
     return (
         <div id="root" className={clsx('app', theme)}>
             <ErrorBoundary displayedError={<ErrorPage />}>
-            <Navbar/>
+                <Navbar />
                 <div className={styles.wrapper}>
                     <Sidebar />
                     <main className={styles.main}>

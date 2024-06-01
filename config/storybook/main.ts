@@ -65,7 +65,7 @@ const config: StorybookConfig = {
         //добавляем definePlugin
         config.plugins?.push(
             new DefinePlugin({
-                WP_DEV: false,
+                WP_DEV: false
             })
         )
 

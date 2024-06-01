@@ -4,10 +4,11 @@
     width: var(--sidebar-width);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: end;
     align-items: center;
     position: relative;
     transition: 0.2s width linear;
+    padding: 20px 5px;
 }
 
 .sidebar-btn {

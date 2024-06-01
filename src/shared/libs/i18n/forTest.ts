@@ -1,4 +1,4 @@
-import i18n from 'i18next'
+import i18next from 'i18next'
 
 jest.mock('react-i18next', () => ({
     // this mock makes sure any components using the translate hook can use it without a warning being shown
@@ -17,7 +17,7 @@ jest.mock('react-i18next', () => ({
 }))
 
 // eslint-disable-next-line import/no-named-as-default-member
-i18n.init({
+i18next.init({
     lng: 'ru',
     fallbackLng: 'ru',
     debug: false,
@@ -25,4 +25,4 @@ i18n.init({
     resources: { ru: { translations: {} } }
 })
 
-export default i18n
+export default i18next

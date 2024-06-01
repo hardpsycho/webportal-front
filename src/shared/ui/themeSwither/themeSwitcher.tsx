@@ -1,18 +1,19 @@
-import { useTheme } from '@shared/libs/theme'
-import { clsx } from 'clsx';
+import { clsx } from 'clsx'
 import { type FC } from 'react'
+
+import { useTheme } from '@shared/libs/theme'
 import styles from './themeSwitcher.m.scss'
 import DarkIcon from './assets/dark.svg'
 import LightIcon from './assets/light.svg'
-import { Theme } from '@shared/libs/theme/types';
-import { Button, ButtonVariant } from '@shared/ui/button';
+import { Theme } from '@shared/libs/theme/types'
+import { Button, ButtonVariant } from '@shared/ui/button'
 
 interface ThemeSwitcherProps {
     className?: string
 }
 
 const ThemeSwitcher: FC<ThemeSwitcherProps> = ({ className }) => {
-    const { theme, toggleTheme } = useTheme();
+    const { theme, toggleTheme } = useTheme()
 
     return (
         <Button

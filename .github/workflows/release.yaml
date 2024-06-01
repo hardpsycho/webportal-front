@@ -27,6 +27,13 @@ jobs:
     - name: 'Create .env file'
       run: |
         echo "${{ secrets.ENV_FILE }}" > .env
+    - name: unit testing
+      run: npm run test:unit
+    - name: run storybook in bg
+      if: always()
+      run: npm run storybook &
+    - name: screenshot regress testinga
+      run: npm run test:ui
     - name: npm run production build
       if: always()
       run: npm run build:prod
@@ -63,7 +70,7 @@ jobs:
       with:
         valueFile: 'argocd/prod/deployment.yaml'
         propertyPath: 'spec.template.spec.containers.0.image'
-        value: hapsy/webportal-front:${{  github.ref_name }}
+        value: dockerhub.timeweb.cloud/hapsy/webportal-front:${{  github.ref_name }}
         commitChange: false
     - name: Commit the changes for argocd
       run: | 

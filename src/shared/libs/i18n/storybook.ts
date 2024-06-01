@@ -1,6 +1,6 @@
-import i18n from 'i18next';
+import i18next from 'i18next'
 
-i18n.init({
+i18next.init({
     lng: 'ru',
     fallbackLng: 'ru',
     debug: false,
@@ -8,4 +8,4 @@ i18n.init({
     resources: { ru: { translations: {} } }
 })
 
-export default i18n
+export default i18next

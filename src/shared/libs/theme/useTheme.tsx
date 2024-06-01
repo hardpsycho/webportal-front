@@ -1,9 +1,10 @@
-import { useContext } from "react"
-import { ThemeContext } from "./createContext"
-import { Theme } from "./types"
+import { useContext } from 'react'
+
+import { ThemeContext } from './createContext'
+import { Theme } from './types'
 
 type UseThemeReturned = {
-    theme: Theme,
+    theme: Theme
     toggleTheme: () => void
 }
 

@@ -1,20 +1,26 @@
 import { clsx } from 'clsx'
 import { ButtonHTMLAttributes, type FC } from 'react'
+
 import styles from './button.m.scss'
 
 enum ButtonVariant {
     STANDART = 'standart',
     GHOST = 'ghost',
-    INVERTED = 'inverted',
+    INVERTED = 'inverted'
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     variant?: ButtonVariant
 }
 
-const Button: FC<ButtonProps> = ({ children, variant = ButtonVariant.STANDART, className, ...otherProps }) => {
+const Button: FC<ButtonProps> = ({
+    children,
+    variant = ButtonVariant.STANDART,
+    className,
+    ...otherProps
+}) => {
     return (
-        <button {...otherProps} className={clsx(styles.button, styles[variant], className)} >
+        <button {...otherProps} className={clsx(styles.button, styles[variant], className)}>
             {children}
         </button>
     )
