@@ -1,5 +1,6 @@
-import { render, screen } from "@testing-library/react"
-import { Sidebar } from "./sidebar"
+import { render, screen } from '@testing-library/react'
+
+import { Sidebar } from './sidebar'
 
 describe('Sidebar test', () => {
     it('Sidebar test exist', () => {

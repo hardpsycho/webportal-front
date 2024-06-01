@@ -21,6 +21,19 @@ jobs:
     - name: 'Create .env file'
       run: |
         echo "${{ secrets.ENV_FILE }}" > .env
+    - name: linting typescript
+      if: always()
+      run: npm run lint:ts
+    - name: linting styles
+      if: always()
+      run: npm run lint:styles
+    - name: unit testing
+      run: npm run test:unit
+    - name: run storybook in bg
+      if: always()
+      run: npm run storybook &
+    - name: screenshot regress testing
+      run: npm run test:ui
     - name: npm run production build
       if: always()
       run: npm run build:prod

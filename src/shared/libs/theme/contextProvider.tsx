@@ -1,12 +1,13 @@
-import { FC, ReactNode, useState } from "react"
-import { ThemeContext } from "./createContext"
-import { Theme } from "./types"
+import { FC, ReactNode, useState } from 'react'
+
+import { ThemeContext } from './createContext'
+import { Theme } from './types'
 
 const LC_HP_THEME_KEY = 'hp-theme'
 
 const savedThem = localStorage.getItem(LC_HP_THEME_KEY) as Theme
 
-export const ThemeProvider: FC<{children: ReactNode}> = ({children}) => {
+export const ThemeProvider: FC<{ children: ReactNode }> = ({ children }) => {
     const [theme, setTheme] = useState<Theme>(savedThem || Theme.LIGHT)
 
     const toggleTheme = () => {
@@ -16,10 +17,12 @@ export const ThemeProvider: FC<{children: ReactNode}> = ({children}) => {
     }
 
     return (
-        <ThemeContext.Provider value={{
-            theme,
-            toggleTheme
-        }}>
+        <ThemeContext.Provider
+            value={{
+                theme,
+                toggleTheme
+            }}
+        >
             {children}
         </ThemeContext.Provider>
     )

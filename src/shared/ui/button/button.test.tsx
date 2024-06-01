@@ -1,5 +1,6 @@
-import { Button } from "./button"
-import {render, screen} from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
+
+import { Button } from './button'
 
 describe('Button test', () => {
     test('Button test children text', () => {

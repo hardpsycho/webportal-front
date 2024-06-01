@@ -1,13 +1,13 @@
 import { useCallback, type FC } from 'react'
 import { useTranslation } from 'react-i18next'
+
 import { Button, ButtonVariant } from '@shared/ui/button'
-import styles from './languageSwitcher.m.css'
 
 interface LanguageSwitcherProps {
     className?: string
 }
 
-const LanguageSwitcher: FC<LanguageSwitcherProps> = ({ className }) => {
+const LanguageSwitcher: FC<LanguageSwitcherProps> = () => {
     const { t, i18n } = useTranslation()
 
     const changeLanguage = useCallback(() => {
@@ -15,7 +15,9 @@ const LanguageSwitcher: FC<LanguageSwitcherProps> = ({ className }) => {
     }, [i18n.language])
 
     return (
-        <Button variant={ButtonVariant.GHOST} onClick={changeLanguage}>{t('language-abbreviation')}</Button>
+        <Button variant={ButtonVariant.GHOST} onClick={changeLanguage}>
+            {t('language-abbreviation')}
+        </Button>
     )
 }
 

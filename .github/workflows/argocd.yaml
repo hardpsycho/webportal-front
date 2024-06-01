@@ -21,7 +21,7 @@ jobs:
       with:
         valueFile: 'argocd/test/deployment.yaml'
         propertyPath: 'spec.template.spec.containers.0.image'
-        value: hapsy/webportal-front:pr-${{ github.event.number }}
+        value: dockerhub.timeweb.cloud/hapsy/webportal-front:pr-${{ github.event.number }}
         commitChange: false
     - name: Commit the changes for argocd
       run: | 
