@@ -1,7 +1,6 @@
 import { clsx } from 'clsx'
 import { type FC } from 'react'
 
-import { AppLink, AppLinkVariant } from '@shared/ui/appLink'
 import styles from './navbar.m.scss'
 
 interface NavbarProps {
@@ -11,14 +10,7 @@ interface NavbarProps {
 const Navbar: FC<NavbarProps> = ({ className }) => {
     return (
         <header data-testid="navbar" className={clsx(styles.navbar, className)}>
-            <div className={styles.links}>
-                <AppLink to="/" variant={AppLinkVariant.INVERTED}>
-                    Главная
-                </AppLink>
-                <AppLink to="/about" variant={AppLinkVariant.INVERTED}>
-                    О нас
-                </AppLink>
-            </div>
+            <div className={styles.links}></div>
         </header>
     )
 }
