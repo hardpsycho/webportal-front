@@ -4,20 +4,16 @@
     width: var(--sidebar-width);
     display: flex;
     flex-direction: column;
-    justify-content: end;
+    justify-content: space-between;
     align-items: center;
     position: relative;
     transition: 0.2s width linear;
-    padding: 20px 5px;
+    padding: 20px;
 }
 
 .sidebar-btn {
-    background: var(--inverted-bg-color);
-    position: absolute;
-    right: -20px;
-    bottom: 30px;
-    font-size: 30px;
     color: white;
+    align-self: flex-start;
 }
 
 .switchers {
@@ -33,4 +29,22 @@
     .switchers {
         flex-direction: column;
     }
+
+    .link-title {
+        opacity: 0;
+        width: 0;
+        transition: opacity 0.2s linear;
+    }
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.link {
+    display: flex;
+    gap: 8px;
+    align-items: center;
 }
