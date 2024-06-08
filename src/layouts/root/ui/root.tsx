@@ -21,11 +21,13 @@ const Root: FC<RootProps> = () => {
                 <div className={styles.wrapper}>
                     <Sidebar />
                     <main className={styles.main}>
-                        <ErrorBoundary displayedError={<ErrorPage />}>
-                            <Suspense fallback={<PageLoader />}>
-                                <Outlet />
-                            </Suspense>
-                        </ErrorBoundary>
+                        <div className={styles.pageWrapper}>
+                            <ErrorBoundary displayedError={<ErrorPage />}>
+                                <Suspense fallback={<PageLoader />}>
+                                    <Outlet />
+                                </Suspense>
+                            </ErrorBoundary>
+                        </div>
                     </main>
                 </div>
             </ErrorBoundary>
