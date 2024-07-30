@@ -2,8 +2,8 @@ import { clsx } from 'clsx'
 import { useState, type FC } from 'react'
 
 import { Button, ButtonVariant } from '@shared/ui/button'
-import { Modal } from '@shared/ui/modal'
 import styles from './navbar.m.scss'
+import { ModalLoginForm } from '@features/auth/loginByUsername'
 
 interface NavbarProps {
     className?: string
@@ -26,9 +26,7 @@ const Navbar: FC<NavbarProps> = ({ className }) => {
                 <Button variant={ButtonVariant.GHOST} onClick={modalOpenHandler}>
                     Войти
                 </Button>
-                <Modal isOpen={isModalOpened} onClose={modalCloseHandler}>
-                    Форма
-                </Modal>
+                <ModalLoginForm isOpen={isModalOpened} onClose={modalCloseHandler} />
             </div>
         </header>
     )
