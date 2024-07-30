@@ -5,16 +5,19 @@ import './styles/main.scss'
 import { router } from './router/router'
 import { ThemeProvider } from '@shared/libs/theme'
 import '@shared/libs/i18n'
+import { StoreProvider } from './store'
 
 interface AppProps {}
 
 const App: FC<AppProps> = () => {
     return (
-        <ThemeProvider>
-            <Suspense fallback={<div>Loading...</div>}>
-                <RouterProvider router={router} />
-            </Suspense>
-        </ThemeProvider>
+        <StoreProvider>
+            <ThemeProvider>
+                <Suspense fallback={<div>Loading...</div>}>
+                    <RouterProvider router={router} />
+                </Suspense>
+            </ThemeProvider>
+        </StoreProvider>
     )
 }
 

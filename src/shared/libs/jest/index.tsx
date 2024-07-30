@@ -3,12 +3,15 @@ import { ReactNode } from 'react'
 import { MemoryRouter } from 'react-router-dom'
 
 import { ThemeProvider } from '../theme'
+import { StateSchema, StoreProvider } from '@app/store'
 import '@shared/libs/i18n/forTest'
 
-export const renderWithProviders = (child: ReactNode) => {
+export const renderWithProviders = (child: ReactNode, initialState?: Partial<StateSchema>) => {
     return render(
-        <ThemeProvider>
-            <MemoryRouter>{child}</MemoryRouter>
-        </ThemeProvider>
+        <StoreProvider initialState={initialState}>
+            <ThemeProvider>
+                <MemoryRouter>{child}</MemoryRouter>
+            </ThemeProvider>
+        </StoreProvider>
     )
 }
