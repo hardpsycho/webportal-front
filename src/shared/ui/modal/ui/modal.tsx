@@ -3,6 +3,7 @@ import { clsx } from 'clsx'
 
 import styles from './modal.m.scss'
 import { Portal } from '@shared/ui/portal'
+import { useTheme } from '@shared/libs/theme'
 
 interface ModalProps {
     className?: string
@@ -18,6 +19,7 @@ const Modal: FC<ModalProps> = (props) => {
     const [willOpen, setWillOpen] = useState(false)
     const timeRef = useRef<NodeJS.Timeout | null>(null)
     const contentRef = useRef<HTMLDivElement>(null)
+    const { theme } = useTheme()
 
     function clickContentHandler(e: MouseEvent<HTMLElement>) {
         e.stopPropagation()
@@ -78,7 +80,8 @@ const Modal: FC<ModalProps> = (props) => {
                         [styles.willOpen]: isOpen,
                         [styles.open]: willOpen
                     },
-                    className
+                    className,
+                    theme
                 )}
             >
                 <div className={clsx(styles.overlay)} onClick={closeHandler}>
