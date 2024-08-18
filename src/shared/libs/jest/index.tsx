@@ -6,7 +6,7 @@ import { ThemeProvider } from '../theme'
 import { StateSchema, StoreProvider } from '@app/store'
 import '@shared/libs/i18n/forTest'
 
-export const renderWithProviders = (child: ReactNode, initialState?: Partial<StateSchema>) => {
+export const renderWithProviders = (child: ReactNode, initialState?: StateSchema) => {
     return render(
         <StoreProvider initialState={initialState}>
             <ThemeProvider>

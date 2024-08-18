@@ -9,10 +9,12 @@ import styles from './root.m.scss'
 import { PageLoader } from '@shared/ui/pageLoader'
 import { ErrorBoundary } from '@shared/ui/errorBoundary'
 import { ErrorPage } from '@pages/errorPage'
+import { useInitApp } from '@features/initialApp'
 
 interface RootProps {}
 
 const Root: FC<RootProps> = () => {
+    useInitApp()
     const { theme } = useTheme()
     return (
         <div id="root" className={clsx('app', theme)}>

@@ -4,44 +4,44 @@ import { useSelector } from 'react-redux'
 
 import { Button } from '@shared/ui/button'
 import { Input } from '@shared/ui/input'
-import styles from './loginForm.m.scss'
-import { loginActions } from '../../model/slice/loginSlice'
-import { getLoginState } from '../../model/selectors/getLoginState/getLoginState'
+import styles from './logupForm.m.scss'
+import { logupActions } from '../../model/slice/logupSlice'
+import { getLoginState } from '../../model/selectors/getLogupState/getLogupState'
 import { Text, TextVariant } from '@shared/ui/text'
-import { loginByUsername } from '@entities/session'
+import { logupByUsername } from '@entities/session'
 import { useAppDispatch } from '@app/store'
 
-interface LoginFormProps {
+interface LogupFormProps {
     onClose?: () => void
 }
 
-const LoginForm: FC<LoginFormProps> = () => {
+const LogupForm: FC<LogupFormProps> = () => {
     const { t } = useTranslation()
     const dispatch = useAppDispatch()
     const { username, password, isLoading, error } = useSelector(getLoginState)
 
     const onChangeUsername = useCallback(
         (value: string) => {
-            dispatch(loginActions.setUsername(value))
+            dispatch(logupActions.setUsername(value))
         },
         [dispatch]
     )
 
     const onChangePassword = useCallback(
         (value: string) => {
-            dispatch(loginActions.setPassword(value))
+            dispatch(logupActions.setPassword(value))
         },
         [dispatch]
     )
 
     const onSubmitHandler = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        dispatch(loginByUsername({ email: username, password }))
+        dispatch(logupByUsername({ email: username, password }))
     }
 
     return (
         <form onSubmit={onSubmitHandler} className={styles.form}>
-            <Text title={t('login-form')} />
+            <Text title={t('logup-form')} />
             {error && <Text text={t(error)} variant={TextVariant.ERROR} />}
             <Input onChange={onChangeUsername} value={username} />
             <Input onChange={onChangePassword} value={password} type="password" />
@@ -50,6 +50,6 @@ const LoginForm: FC<LoginFormProps> = () => {
     )
 }
 
-const MemoizedLoginForm = memo(LoginForm)
+const MemoizedLogupForm = memo(LogupForm)
 
-export { MemoizedLoginForm as LoginForm }
+export { MemoizedLogupForm as LogupForm }
