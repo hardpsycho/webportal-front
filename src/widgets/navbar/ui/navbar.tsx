@@ -1,32 +1,32 @@
 import { clsx } from 'clsx'
-import { useState, type FC } from 'react'
+import { type FC } from 'react'
+import { useSelector } from 'react-redux'
 
-import { Button, ButtonVariant } from '@shared/ui/button'
+import { LoginButton } from '@features/auth/loginByUsername'
 import styles from './navbar.m.scss'
-import { ModalLoginForm } from '@features/auth/loginByUsername'
+import { getSessionState } from '@entities/session'
+import { LogoutButton } from '@features/auth/logout'
+import { LogupButton } from '@features/auth/logupByUsername'
 
 interface NavbarProps {
     className?: string
 }
 
 const Navbar: FC<NavbarProps> = ({ className }) => {
-    const [isModalOpened, setIsModalOpened] = useState(false)
-
-    const modalOpenHandler = () => {
-        setIsModalOpened(true)
-    }
-
-    const modalCloseHandler = () => {
-        setIsModalOpened(false)
-    }
+    const sessionState = useSelector(getSessionState)
+    const isAuth = sessionState.id !== null
 
     return (
         <header data-testid="navbar" className={clsx(styles.navbar, className)}>
             <div className={styles.buttons}>
-                <Button variant={ButtonVariant.GHOST} onClick={modalOpenHandler}>
-                    Войти
-                </Button>
-                <ModalLoginForm isOpen={isModalOpened} onClose={modalCloseHandler} />
+                {isAuth ? (
+                    <LogoutButton />
+                ) : (
+                    <>
+                        <LoginButton />
+                        <LogupButton />
+                    </>
+                )}
             </div>
         </header>
     )

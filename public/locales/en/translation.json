@@ -3,5 +3,10 @@
   "language-abbreviation": "RU",
   "not-found-page": "Page not found",
   "error-message": "Something went wrong. Try reload this page.",
-  "login": "Login"
+  "login": "Login",
+  "auth-error": "Wrong login or password",
+  "login-form": "Login form",
+  "logup-form": "Log up form",
+  "logup": "Log up",
+  "logout": "Log out"
 }
