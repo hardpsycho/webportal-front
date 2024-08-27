@@ -1,23 +1,27 @@
 import { configureStore, ReducersMapObject } from '@reduxjs/toolkit'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useStore } from 'react-redux'
 
-import { loginReducer } from '@features/auth/loginByUsername'
-import { logupReducer } from '@features/auth/logupByUsername'
 import { sessionReducer } from '@entities/session'
-import { AppDispatch, StateSchema } from './../types/StateSchema'
+import { AppDispatch, AppStore, StateSchema } from './../types/StateSchema'
+import { createReducerManager } from '../reducerMananger/reducerManager'
 
 export function configureCustomStore(initialState?: StateSchema) {
     const rootReducers: ReducersMapObject<StateSchema> = {
-        loginForm: loginReducer,
-        logupForm: logupReducer,
         session: sessionReducer
     }
 
-    return configureStore<StateSchema>({
-        reducer: rootReducers,
+    const reducerManager = createReducerManager(rootReducers)
+
+    const store: AppStore = configureStore<StateSchema>({
+        reducer: reducerManager.reduce,
         devTools: WP_DEV,
-        preloadedState: initialState as StateSchema
+        preloadedState: initialState
     })
+
+    store.reducerManager = reducerManager
+
+    return store
 }
 
 export const useAppDispatch = useDispatch.withTypes<AppDispatch>()
+export const useAppStore = useStore.withTypes<AppStore>()

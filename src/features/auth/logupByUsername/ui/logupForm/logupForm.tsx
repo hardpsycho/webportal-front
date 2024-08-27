@@ -5,20 +5,26 @@ import { useSelector } from 'react-redux'
 import { Button } from '@shared/ui/button'
 import { Input } from '@shared/ui/input'
 import styles from './logupForm.m.scss'
-import { logupActions } from '../../model/slice/logupSlice'
-import { getLoginState } from '../../model/selectors/getLogupState/getLogupState'
+import { logupActions, logupReducer } from '../../model/slice/logupSlice'
 import { Text, TextVariant } from '@shared/ui/text'
 import { logupByUsername } from '@entities/session'
 import { useAppDispatch } from '@app/store'
+import { getLogupState } from '../../model/selectors/getLogupState/getLogupState'
+import { useDynamicReducer } from '@shared/libs/useDynamicReducer'
+import { UseDynamicReducerProps } from '@shared/libs/useDynamicReducer/useDynamicReducer'
 
 interface LogupFormProps {
     onClose?: () => void
 }
 
+const dynamicReducers: UseDynamicReducerProps = [{ key: 'logupForm', reducer: logupReducer }]
+
 const LogupForm: FC<LogupFormProps> = () => {
     const { t } = useTranslation()
     const dispatch = useAppDispatch()
-    const { username, password, isLoading, error } = useSelector(getLoginState)
+    useDynamicReducer(dynamicReducers)
+
+    const { username, password, isLoading, error } = useSelector(getLogupState)
 
     const onChangeUsername = useCallback(
         (value: string) => {
