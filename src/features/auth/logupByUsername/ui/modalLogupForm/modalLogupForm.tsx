@@ -16,4 +16,4 @@ const ModalLogupForm: FC<ModalLogupFormProps> = ({ isOpen, onClose }) => {
     )
 }
 
-export { ModalLogupForm }
+export default ModalLogupForm

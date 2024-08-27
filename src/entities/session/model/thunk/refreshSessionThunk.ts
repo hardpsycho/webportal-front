@@ -8,7 +8,10 @@ const refreshSession = createAsyncThunk<string, unknown, { rejectValue: string }
     async (_, thunkApi) => {
         try {
             const response = await axios.get<{ accessToken: string }>(
-                'http://localhost:5000/auth/refresh'
+                'http://localhost:5000/auth/refresh',
+                {
+                    withCredentials: true
+                }
             )
 
             console.log('response', response)

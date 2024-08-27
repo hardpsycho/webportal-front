@@ -1,8 +1,8 @@
-import { useState, type FC } from 'react'
+import { Suspense, useState, type FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { Button, ButtonVariant } from '@shared/ui/button'
-import { ModalLoginForm } from '../modalLoginForm/modalLoginForm'
+import { ModalLoginFormLazy } from '../modalLoginForm/modalLoginForm.lazy'
 
 interface LoginButtonProps {
     className?: string
@@ -25,7 +25,11 @@ const LoginButton: FC<LoginButtonProps> = () => {
             <Button variant={ButtonVariant.GHOST} onClick={modalOpenHandler}>
                 {t('login')}
             </Button>
-            <ModalLoginForm isOpen={isModalOpened} onClose={modalCloseHandler} />
+            {isModalOpened && (
+                <Suspense>
+                    <ModalLoginFormLazy isOpen={isModalOpened} onClose={modalCloseHandler} />
+                </Suspense>
+            )}
         </>
     )
 }
