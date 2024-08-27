@@ -1,12 +1,29 @@
+import { EnhancedStore, StoreEnhancer, ThunkDispatch, Tuple, UnknownAction } from '@reduxjs/toolkit'
+
 import { SessionSchema } from '@entities/session'
 import { LoginSchema } from '@features/auth/loginByUsername'
 import { LogupSchema } from '@features/auth/logupByUsername'
 import { configureCustomStore } from '../store/store'
+import { createReducerManager } from '../reducerMananger/reducerManager'
 
 export interface StateSchema {
-    loginForm: LoginSchema
-    logupForm: LogupSchema
+    loginForm?: LoginSchema
+    logupForm?: LogupSchema
     session: SessionSchema
 }
 
+export type AppStore = EnhancedStore<
+    StateSchema,
+    UnknownAction,
+    Tuple<
+        [
+            StoreEnhancer<{
+                dispatch: ThunkDispatch<StateSchema, undefined, UnknownAction>
+            }>,
+            StoreEnhancer
+        ]
+    >
+> & { reducerManager?: ReturnType<typeof createReducerManager> }
+
 export type AppDispatch = ReturnType<typeof configureCustomStore>['dispatch']
+export type AppState = ReturnType<ReturnType<typeof configureCustomStore>['getState']>

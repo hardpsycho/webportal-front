@@ -15,7 +15,10 @@ const loginByUsername = createAsyncThunk<string, LoginByUsernameProps, { rejectV
         try {
             const response = await axios.post<{ accessToken: string }>(
                 'http://localhost:5000/auth/sign-in',
-                userData
+                userData,
+                {
+                    withCredentials: true
+                }
             )
 
             console.log('response', response)

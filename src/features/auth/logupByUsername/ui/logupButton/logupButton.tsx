@@ -1,8 +1,8 @@
-import { useState, type FC } from 'react'
+import { Suspense, useState, type FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { Button, ButtonVariant } from '@shared/ui/button'
-import { ModalLogupForm } from '../modalLogupForm/modalLogupForm'
+import { ModalLogupFormLazy } from '../modalLogupForm/modalLogupForm.lazy'
 
 interface LogupButtonProps {
     className?: string
@@ -25,7 +25,11 @@ const LogupButton: FC<LogupButtonProps> = () => {
             <Button variant={ButtonVariant.GHOST} onClick={modalOpenHandler}>
                 {t('logup')}
             </Button>
-            <ModalLogupForm isOpen={isModalOpened} onClose={modalCloseHandler} />
+            {isModalOpened && (
+                <Suspense>
+                    <ModalLogupFormLazy isOpen={isModalOpened} onClose={modalCloseHandler} />
+                </Suspense>
+            )}
         </>
     )
 }
