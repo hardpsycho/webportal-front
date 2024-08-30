@@ -4,6 +4,7 @@ import { AboutPage } from '@pages/aboutPage'
 import { MainPage } from '@pages/mainPage'
 import { Root } from '@layouts/root'
 import { NotFoundPage } from '@pages/notFoundPage'
+import { ProfilePage } from '@pages/profilePage'
 
 export const router = createBrowserRouter([
     {
@@ -17,6 +18,10 @@ export const router = createBrowserRouter([
             {
                 path: '/about',
                 element: <AboutPage />
+            },
+            {
+                path: '/profile',
+                element: <ProfilePage />
             },
             {
                 path: '/*',

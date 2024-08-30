@@ -30,12 +30,6 @@
     .switchers {
         flex-direction: column;
     }
-
-    .link-title {
-        opacity: 0;
-        width: 0;
-        transition: opacity 0.2s linear;
-    }
 }
 
 .links {
@@ -44,8 +38,3 @@
     gap: 16px;
 }
 
-.link {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-}

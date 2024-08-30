@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { loginByUsername } from '../thunk/loginByUsernameThunk'
+import { loginByUsername } from '../thunk/loginByUsernameThunk/loginByUsernameThunk'
 import { logupByUsername } from '../thunk/logupByUsernameThunk'
 import { refreshSession } from '../thunk/refreshSessionThunk'
 import { removeSession } from '../thunk/removeSessionThunk'
