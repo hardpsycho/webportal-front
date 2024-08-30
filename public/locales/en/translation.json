@@ -8,5 +8,8 @@
   "login-form": "Login form",
   "logup-form": "Log up form",
   "logup": "Log up",
-  "logout": "Log out"
+  "logout": "Log out",
+  "main-page-link": "Home",
+  "profile-page-link": "Profile",
+  "about-page-link": "About"
 }

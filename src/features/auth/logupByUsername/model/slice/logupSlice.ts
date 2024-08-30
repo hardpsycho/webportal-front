@@ -31,6 +31,8 @@ export const logupSlice = createSlice({
         })
         builder.addCase(logupByUsername.fulfilled, (state) => {
             state.isLoading = false
+            state.password = ''
+            state.username = ''
         })
     }
 })

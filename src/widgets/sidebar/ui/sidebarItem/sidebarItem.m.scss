@@ -1,0 +1,11 @@
+.link {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.link-title {
+    opacity: 0;
+    width: 0;
+    transition: opacity 0.2s linear;
+}

@@ -21,7 +21,7 @@ const dynamicReducers: UseDynamicReducerProps = [
     { key: 'loginForm', reducer: loginReducer, removeAfterUnmount: false }
 ]
 
-const LoginForm: FC<LoginFormProps> = () => {
+const LoginForm: FC<LoginFormProps> = ({ onClose }) => {
     const { t } = useTranslation()
     const dispatch = useAppDispatch()
     useDynamicReducer(dynamicReducers)
@@ -42,9 +42,12 @@ const LoginForm: FC<LoginFormProps> = () => {
         [dispatch]
     )
 
-    const onSubmitHandler = (e: FormEvent<HTMLFormElement>) => {
+    const onSubmitHandler = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        dispatch(loginByUsername({ email: username, password }))
+        const result = await dispatch(loginByUsername({ email: username, password }))
+        if (result.meta.requestStatus === 'fulfilled') {
+            onClose?.()
+        }
     }
 
     return (

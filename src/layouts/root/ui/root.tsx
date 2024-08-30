@@ -4,7 +4,7 @@ import { FC, Suspense } from 'react'
 
 import { Navbar } from '@widgets/navbar'
 import { useTheme } from '@shared/libs/theme'
-import { Sidebar } from '@widgets/sidebar/ui/sidebar'
+import { Sidebar } from '@widgets/sidebar/ui/sidebar/sidebar'
 import styles from './root.m.scss'
 import { PageLoader } from '@shared/ui/pageLoader'
 import { ErrorBoundary } from '@shared/ui/errorBoundary'

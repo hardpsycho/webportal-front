@@ -21,23 +21,19 @@ const loginByUsername = createAsyncThunk<string, LoginByUsernameProps, { rejectV
                 }
             )
 
-            console.log('response', response)
-
             const token = response.data.accessToken
 
             if (token) {
                 localStorage.setItem(LS_ACCESS_TOKEN, token)
                 const splittedToken = token.split('.')
                 const decodedPayload = JSON.parse(atob(splittedToken[1]))
-                console.log('decodedPayload', decodedPayload)
                 const id = decodedPayload.id as string
-                console.log('id', id)
                 return id
             }
 
             return thunkApi.rejectWithValue('login-error')
         } catch (error) {
-            console.log(error)
+            console.log('error', error)
             return thunkApi.rejectWithValue('login-error')
         }
     }

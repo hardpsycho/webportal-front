@@ -8,5 +8,8 @@
   "login-form": "Форма авторизации",
   "logup-form": "Форма регистрации",
   "logup": "Регистрация",
-  "logout": "Выйти"
+  "logout": "Выйти",
+  "main-page-link": "Главная",
+  "profile-page-link": "Профиль",
+  "about-page-link": "О нас"
 }
