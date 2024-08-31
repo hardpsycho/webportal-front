@@ -6,6 +6,8 @@ import { logupByUsername } from '@entities/session'
 const initialState: LogupSchema = {
     username: '',
     password: '',
+    lastName: '',
+    firstName: '',
     isLoading: false
 }
 
@@ -18,6 +20,12 @@ export const logupSlice = createSlice({
         },
         setPassword: (state, action: PayloadAction<string>) => {
             state.password = action.payload
+        },
+        setLastName: (state, action: PayloadAction<string>) => {
+            state.lastName = action.payload
+        },
+        setFirstName: (state, action: PayloadAction<string>) => {
+            state.firstName = action.payload
         }
     },
     extraReducers: (builder) => {
@@ -33,6 +41,8 @@ export const logupSlice = createSlice({
             state.isLoading = false
             state.password = ''
             state.username = ''
+            state.lastName = ''
+            state.firstName = ''
         })
     }
 })
