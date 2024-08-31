@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: front-container
-          image: dockerhub.timeweb.cloud/hapsy/webportal-front:pr-39
+          image: dockerhub.timeweb.cloud/hapsy/webportal-front:pr-40
           ports:
             - containerPort: 80

@@ -6,6 +6,8 @@ import { LS_ACCESS_TOKEN } from '@shared/const'
 interface LogupByUsernameProps {
     email: string
     password: string
+    lastName: string
+    firstName: string
 }
 
 const logupByUsername = createAsyncThunk<string, LogupByUsernameProps, { rejectValue: string }>(

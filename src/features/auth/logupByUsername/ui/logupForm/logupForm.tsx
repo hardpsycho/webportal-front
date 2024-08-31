@@ -24,7 +24,7 @@ const LogupForm: FC<LogupFormProps> = () => {
     const dispatch = useAppDispatch()
     useDynamicReducer(dynamicReducers)
 
-    const { username, password, isLoading, error } = useSelector(getLogupState)
+    const { username, password, lastName, firstName, isLoading, error } = useSelector(getLogupState)
 
     const onChangeUsername = useCallback(
         (value: string) => {
@@ -40,9 +40,23 @@ const LogupForm: FC<LogupFormProps> = () => {
         [dispatch]
     )
 
+    const onChangeFirstName = useCallback(
+        (value: string) => {
+            dispatch(logupActions.setFirstName(value))
+        },
+        [dispatch]
+    )
+
+    const onChangeLastName = useCallback(
+        (value: string) => {
+            dispatch(logupActions.setLastName(value))
+        },
+        [dispatch]
+    )
+
     const onSubmitHandler = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        dispatch(logupByUsername({ email: username, password }))
+        dispatch(logupByUsername({ email: username, password, lastName, firstName }))
     }
 
     return (
@@ -51,6 +65,8 @@ const LogupForm: FC<LogupFormProps> = () => {
             {error && <Text text={t(error)} variant={TextVariant.ERROR} />}
             <Input onChange={onChangeUsername} value={username} />
             <Input onChange={onChangePassword} value={password} type="password" />
+            <Input onChange={onChangeFirstName} value={firstName} placeholder="имя" />
+            <Input onChange={onChangeLastName} value={lastName} placeholder="фамилия" />
             <Button disabled={isLoading}>{t('login')}</Button>
         </form>
     )
