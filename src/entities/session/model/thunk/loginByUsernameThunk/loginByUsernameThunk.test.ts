@@ -1,12 +1,14 @@
-import axios from 'axios'
+import { AxiosInstance } from 'axios'
 import { Dispatch } from '@reduxjs/toolkit'
 
 import { loginByUsername } from './loginByUsernameThunk'
 import { StateSchema } from '@app/store'
+import { api as instance } from '@shared/api/instance'
 
 describe('loginByUsername test', () => {
     let dispatch: Dispatch
     let getState: () => StateSchema
+    const api: AxiosInstance = instance
 
     beforeEach(() => {
         dispatch = jest.fn()
@@ -14,8 +16,7 @@ describe('loginByUsername test', () => {
     })
 
     it('loginByUsername success test', async () => {
-        jest.spyOn(axios, 'post').mockImplementation((request) => {
-            console.log('request', request)
+        jest.spyOn(instance, 'post').mockImplementation(() => {
             return Promise.resolve({
                 data: {
                     accessToken:
@@ -25,8 +26,7 @@ describe('loginByUsername test', () => {
         })
 
         const action = loginByUsername({ email: 'serg', password: 'pass' })
-        const result = await action(dispatch, getState, undefined)
-        console.log('result', result)
+        const result = await action(dispatch, getState, { api })
 
         expect(result.meta.requestStatus).toBe('fulfilled')
         // в токене объект - { id: 7, email: 'admin@gmail.ru', iat: 1724779460, exp: 1724780060 }
@@ -35,14 +35,12 @@ describe('loginByUsername test', () => {
     })
 
     it('loginByUsername wrong test', async () => {
-        jest.spyOn(axios, 'post').mockImplementation((request) => {
-            console.log('request', request)
+        jest.spyOn(instance, 'post').mockImplementation(() => {
             return Promise.resolve({ status: 403 })
         })
 
         const action = loginByUsername({ email: 'serg', password: 'pass' })
-        const result = await action(dispatch, getState, undefined)
-        console.log('result', result)
+        const result = await action(dispatch, getState, { api })
 
         expect(result.meta.requestStatus).toBe('rejected')
     })

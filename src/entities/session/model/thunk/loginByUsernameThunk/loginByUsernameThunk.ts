@@ -1,25 +1,18 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import axios from 'axios'
 
 import { LS_ACCESS_TOKEN } from '@shared/const'
+import { ExtraArgs } from '@app/store'
 
 interface LoginByUsernameProps {
     email: string
     password: string
 }
 
-const loginByUsername = createAsyncThunk<string, LoginByUsernameProps, { rejectValue: string }>(
+const loginByUsername = createAsyncThunk<string, LoginByUsernameProps, ExtraArgs>(
     'session/loginByUsername',
     async (userData, thunkApi) => {
-        console.log('userData', userData)
         try {
-            const response = await axios.post<{ accessToken: string }>(
-                'http://localhost:5000/auth/sign-in',
-                userData,
-                {
-                    withCredentials: true
-                }
-            )
+            const response = await thunkApi.extra.api.post('/auth/sign-in', userData)
 
             const token = response.data.accessToken
 

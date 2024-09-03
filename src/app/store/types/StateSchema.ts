@@ -1,4 +1,5 @@
 import { EnhancedStore, StoreEnhancer, ThunkDispatch, Tuple, UnknownAction } from '@reduxjs/toolkit'
+import { AxiosInstance } from 'axios'
 
 import { SessionSchema } from '@entities/session'
 import { LoginSchema } from '@features/auth/loginByUsername'
@@ -18,7 +19,13 @@ export type AppStore = EnhancedStore<
     Tuple<
         [
             StoreEnhancer<{
-                dispatch: ThunkDispatch<StateSchema, undefined, UnknownAction>
+                dispatch: ThunkDispatch<
+                    StateSchema,
+                    {
+                        api: AxiosInstance
+                    },
+                    UnknownAction
+                >
             }>,
             StoreEnhancer
         ]
@@ -27,3 +34,4 @@ export type AppStore = EnhancedStore<
 
 export type AppDispatch = ReturnType<typeof configureCustomStore>['dispatch']
 export type AppState = ReturnType<ReturnType<typeof configureCustomStore>['getState']>
+export type ExtraArgs = { rejectValue: string; extra: { api: AxiosInstance } }

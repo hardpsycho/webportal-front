@@ -1,22 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import axios from 'axios'
 
 import { LS_ACCESS_TOKEN } from '@shared/const'
+import { ExtraArgs } from '@app/store'
 
-const removeSession = createAsyncThunk<boolean, unknown, { rejectValue: string }>(
+const removeSession = createAsyncThunk<boolean, unknown, ExtraArgs>(
     'session/removeSession',
-    async () => {
+    async (_, thunkApi) => {
         try {
-            await axios.post<{ accessToken: string }>(
-                'http://localhost:5000/auth/sign-out',
-                {},
-                {
-                    withCredentials: true,
-                    headers: {
-                        Authorization: `Bearer ${localStorage.getItem(LS_ACCESS_TOKEN)}`
-                    }
-                }
-            )
+            await thunkApi.extra.api.post<{ accessToken: string }>('/auth/sign-out')
         } catch (error) {
             console.log(error)
         }
