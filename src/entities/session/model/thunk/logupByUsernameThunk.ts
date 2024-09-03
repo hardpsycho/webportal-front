@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import axios from 'axios'
 
 import { LS_ACCESS_TOKEN } from '@shared/const'
+import { ExtraArgs } from '@app/store'
 
 interface LogupByUsernameProps {
     email: string
@@ -10,20 +10,14 @@ interface LogupByUsernameProps {
     firstName: string
 }
 
-const logupByUsername = createAsyncThunk<string, LogupByUsernameProps, { rejectValue: string }>(
+const logupByUsername = createAsyncThunk<string, LogupByUsernameProps, ExtraArgs>(
     'session/logupByUsername',
     async (userData, thunkApi) => {
-        console.log('userData', userData)
         try {
-            const response = await axios.post<{ accessToken: string }>(
-                'http://localhost:5000/auth/sign-up',
-                userData,
-                {
-                    withCredentials: true
-                }
+            const response = await thunkApi.extra.api.post<{ accessToken: string }>(
+                '/auth/sign-up',
+                userData
             )
-
-            console.log('response', response)
 
             const token = response.data.accessToken
 
@@ -31,9 +25,7 @@ const logupByUsername = createAsyncThunk<string, LogupByUsernameProps, { rejectV
                 localStorage.setItem(LS_ACCESS_TOKEN, token)
                 const splittedToken = token.split('.')
                 const decodedPayload = JSON.parse(atob(splittedToken[1]))
-                console.log('decodedPayload', decodedPayload)
                 const id = decodedPayload.id as string
-                console.log('id', id)
                 return id
             }
 
