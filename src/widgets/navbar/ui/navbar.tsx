@@ -6,7 +6,6 @@ import { LoginButton } from '@features/auth/loginByUsername'
 import styles from './navbar.m.scss'
 import { getSessionState } from '@entities/session'
 import { LogoutButton } from '@features/auth/logout'
-import { LogupButton } from '@features/auth/logupByUsername'
 
 interface NavbarProps {
     className?: string
@@ -18,16 +17,7 @@ const Navbar: FC<NavbarProps> = ({ className }) => {
 
     return (
         <header data-testid="navbar" className={clsx(styles.navbar, className)}>
-            <div className={styles.buttons}>
-                {isAuth ? (
-                    <LogoutButton />
-                ) : (
-                    <>
-                        <LoginButton />
-                        <LogupButton />
-                    </>
-                )}
-            </div>
+            <div className={styles.buttons}>{isAuth ? <LogoutButton /> : <LoginButton />}</div>
         </header>
     )
 }

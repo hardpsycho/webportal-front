@@ -3,7 +3,7 @@ import axios from 'axios'
 import { LS_ACCESS_TOKEN } from '@shared/const'
 
 const api = axios.create({
-    baseURL: WP_DEV ? process.env.DEV_API : process.env.TEST_API,
+    baseURL: process.env.DEV_API,
     withCredentials: true,
     headers: {
         Authorization: `Bearer null`
