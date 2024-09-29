@@ -10,5 +10,13 @@
             "title": "Заголовок 2",
             "text": "Вот текст 3"
         }
+    ],
+
+    "users": [
+        {
+            "id": 1,
+            "email": "admin@email.com",
+            "password": "qwerty"
+        }
     ]
 }
