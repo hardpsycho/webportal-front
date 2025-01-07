@@ -8,6 +8,7 @@ export function outputBuilder(configOptions: ConfigOptions): Output {
     return {
         clean: true,
         filename: '[name].[contenthash].js',
-        path: configOptions.pathToOutputFolder
+        path: configOptions.pathToOutputFolder,
+        publicPath: '/'
     }
 }
