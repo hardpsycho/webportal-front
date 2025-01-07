@@ -5,6 +5,7 @@ import { MainPage } from '@pages/mainPage'
 import { Root } from '@layouts/root'
 import { NotFoundPage } from '@pages/notFoundPage'
 import { ProfilePage } from '@pages/profilePage'
+import { RequireAuth } from './requireAuth'
 
 export const router = createBrowserRouter([
     {
@@ -21,11 +22,19 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/profile/:id',
-                element: <ProfilePage />
+                element: (
+                    <RequireAuth>
+                        <ProfilePage />
+                    </RequireAuth>
+                )
             },
             {
                 path: '/profile',
-                element: <ProfilePage />
+                element: (
+                    <RequireAuth>
+                        <ProfilePage />
+                    </RequireAuth>
+                )
             },
             {
                 path: '/*',
