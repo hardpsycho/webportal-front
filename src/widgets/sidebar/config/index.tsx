@@ -1,6 +1,7 @@
 import HomeLight from '../assets/home-light.svg'
-import AboutLight from '../assets/profile-light.svg'
-import ProfileLight from '../assets/user-light.svg'
+import ProfileLight from '../assets/profile-light.svg'
+import ProfileFilled from '../assets/profile-filled.svg'
+import UserLight from '../assets/user-light.svg'
 
 interface SidebarItem {
     to: string
@@ -16,12 +17,17 @@ export const sidebarItems: SidebarItem[] = [
     },
     {
         to: '/profile',
-        icon: <ProfileLight />,
+        icon: <UserLight />,
         title: 'profile-page-link'
     },
     {
+        to: '/articles',
+        icon: <ProfileLight />,
+        title: 'article_list'
+    },
+    {
         to: '/about',
-        icon: <AboutLight />,
+        icon: <ProfileFilled />,
         title: 'about-page-link'
     }
 ]
