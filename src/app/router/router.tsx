@@ -6,6 +6,8 @@ import { Root } from '@layouts/root'
 import { NotFoundPage } from '@pages/notFoundPage'
 import { ProfilePage } from '@pages/profilePage'
 import { RequireAuth } from './requireAuth'
+import { ArticlesPage } from '@pages/articlesPage'
+import { ArticleDetailPage } from '@pages/articleDetailPage'
 
 export const router = createBrowserRouter([
     {
@@ -33,6 +35,22 @@ export const router = createBrowserRouter([
                 element: (
                     <RequireAuth>
                         <ProfilePage />
+                    </RequireAuth>
+                )
+            },
+            {
+                path: '/articles',
+                element: (
+                    <RequireAuth>
+                        <ArticlesPage />
+                    </RequireAuth>
+                )
+            },
+            {
+                path: '/articles/:id',
+                element: (
+                    <RequireAuth>
+                        <ArticleDetailPage />
                     </RequireAuth>
                 )
             },
