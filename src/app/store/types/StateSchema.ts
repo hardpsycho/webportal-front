@@ -5,9 +5,11 @@ import { SessionSchema } from '@entities/session'
 import { LoginSchema } from '@features/auth/loginByUsername'
 import { configureCustomStore } from '../store/store'
 import { createReducerManager } from '../reducerMananger/reducerManager'
+import { ArticleSchema } from '@entities/article'
 
 export interface StateSchema {
     loginForm?: LoginSchema
+    article?: ArticleSchema
     session: SessionSchema
 }
 

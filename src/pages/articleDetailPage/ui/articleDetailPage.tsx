@@ -1,11 +1,22 @@
 import { memo, type FC } from 'react'
-import { useTranslation } from 'react-i18next'
+import { useParams } from 'react-router-dom'
+
+import { ArticleComponent } from '@entities/article'
 
 interface ArticleDetailPageProps {}
 
 const ArticleDetailPage: FC<ArticleDetailPageProps> = () => {
-    const { t } = useTranslation('article')
-    return <div>{t('article')}</div>
+    const params = useParams()
+
+    if (!params.id) {
+        return null
+    }
+
+    return (
+        <div>
+            <ArticleComponent id={params.id} />
+        </div>
+    )
 }
 
 export default memo(ArticleDetailPage)
